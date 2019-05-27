@@ -2,15 +2,31 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "Plug 'alvesaq/nvim-r'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-Plug 'fatih/vim-go'
+"Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'Soares/base16.nvim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-syntastic/syntastic'
+Plug 'rust-lang/rust.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'rhysd/vim-clang-format'
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
+" (Optional) Multi-entry selection UI.
+Plug 'junegunn/fzf'
+
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
 
 call plug#end()
 
@@ -34,8 +50,6 @@ syntax on
 let g:base16_transparent_background = 1
 "let g:base16_airline=1
 
-let g:ycm_show_diagnostics_ui = 0
-
 set background=dark
 colorscheme chalk
 set number
@@ -43,7 +57,11 @@ set number
 set tabstop=4
 set shiftwidth=4
 set ai
-let g:ycm_max_num_candidates = 10
+
+fu! C_init()
+  setl formatexpr=LanguageClient#textDocument_rangeFormatting()
+endf
+au FileType c,cpp,cuda,objc :call C_init()
 
 let g:syntastic_cpp_compiler_options = '-std=c++17 -DASIO_STANDALONE'
 let g:syntastic_cpp_check_header = 1
@@ -54,7 +72,50 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:rustfmt_autosave = 1
+
+let g:clang_format#auto_format = 1
+
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+let g:tex_flavor  = 'latex'
+let g:tex_conceal = ''
+let g:vimtex_latexmk_continuous = 1
+let g:vimtex_compiler_progname = 'nvr'
+let g:vimtex_view_method = 'zathura'
+
+let g:airline_powerline_fonts = 1
+
+" NCM2
+augroup NCM2
+  autocmd!
+  " some other settings...
+  " uncomment this block if you use vimtex for LaTex
+  autocmd Filetype tex call ncm2#register_source({
+            \ 'name': 'vimtex',
+            \ 'priority': 8,
+            \ 'scope': ['tex'],
+            \ 'mark': 'tex',
+            \ 'word_pattern': '\w+',
+            \ 'complete_pattern': g:vimtex#re#ncm2,
+            \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+            \ })
+augroup END
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['/usr/bin/rustup', 'run', 'nightly', 'rls'],
+    \ 'python': ['/usr/bin/pyls'],
+	\ 'c': ['/usr/bin/ccls'],
+	\ 'cpp': ['/usr/bin/ccls'],
+	\ 'dart' : ['/home/traxys/.pub-cache/bin/dart_language_server'],
+	\ 'go' : ['gopls']}
