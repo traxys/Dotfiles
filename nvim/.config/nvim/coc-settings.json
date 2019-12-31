@@ -1,0 +1,52 @@
+{
+	"java.format.enabled": true,
+	"rust-analyzer.enableCargoWatchOnStartup":"enabled",
+	"--coc.preferences.formatOnSaveFiletypes": ["rust"],
+	"languageserver": {
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "objc", "objcpp"],
+			"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
+		},
+		"dart": {
+			"command": "/home/traxys/.pub-cache/bin/dart_language_server",
+			"args": [],
+			"filetypes": ["dart"],
+			"initializationOptions": {},
+			"settings": {
+				"dart": {
+					"validation": {},
+					"completion": {}
+				}
+			}
+		},
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"]
+		},
+		"haskell": {
+			"command": "hie-wrapper",
+			"rootPatterns": [
+				".stack.yaml",
+				"cabal.config",
+				"package.yaml"
+			],
+			"filetypes": [
+				"hs",
+				"lhs",
+				"haskell"
+			],
+			"initializationOptions": {
+				"languageServerHaskell": {
+					"hlintOn": true
+				}
+			}
+		}
+	}
+}

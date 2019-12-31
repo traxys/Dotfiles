@@ -1,0 +1,35 @@
+[global]
+	font = Hack 11
+	markup = yes
+	sort = no
+	alignement = center
+	word_wrap = yes
+	stack_duplicates = yes
+	hide_duplicates_count = yes
+	geometry = "300x50-15+49"
+	transparency = 5
+	line_height = 3
+	padding = 6
+	horizontal_padding = 6
+	separator_color = frame
+	browser = /usr/bin/firefox -new-tab
+
+    icon_path = /usr/share/icons/Adwaita/16x16/mimetypes/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/48x48/notifications/:/usr/share/icons/Adwaita/48x48/emblems/:/usr/share/icons/Adwaita/48x48/legacy/
+
+frame_color = "#d0d0d0"
+separator_color = "#d0d0d0"
+
+[base16_low]
+    msg_urgency = low
+    background = "#202020"
+    foreground = "#505050"
+
+[base16_normal]
+    msg_urgency = normal
+    background = "#303030"
+    foreground = "#d0d0d0"
+
+[base16_critical]
+    msg_urgency = critical
+    background = "#fb9fb1"
+    foreground = "#e0e0e0"

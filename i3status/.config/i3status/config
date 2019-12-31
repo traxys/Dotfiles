@@ -12,14 +12,16 @@ general {
 }
 
 order += "disk /"
+order += "disk /home"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "battery all"
 order += "load"
+order += "sysdata mem"
 order += "alerted_time"
 
 wireless _first_ {
-        format_up = ": %essid"
+        format_up = ": %essid"
         format_down = ""
 }
 
@@ -44,6 +46,14 @@ load {
         format = ":%1min"
 }
 
+sysdata mem {
+	cache_timeout = 5
+	format = "[\?color=mem : {mem_used_percent}%]"
+}
+
 disk "/" {
         format = ":%avail"
+}
+disk "/home" {
+	format = ":%avail"
 }
