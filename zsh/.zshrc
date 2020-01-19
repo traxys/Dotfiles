@@ -147,7 +147,7 @@ DVORAK=/usr/share/kbd/keymaps/i386/dvorak/dvorak-programmer.map.gz
 export TERM=xterm-256color
 export CARGO_BUILD_PIPELINING=true
 
-source /home/traxys/.config/broot/launcher/bash/br
+# source /home/traxys/.config/broot/launcher/bash/br
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

@@ -11,19 +11,14 @@ general {
         interval = 5
 }
 
+order += "ethernet _first_"
+order += "wireless _first_"
 order += "disk /"
 order += "disk /home"
-order += "wireless _first_"
-order += "ethernet _first_"
-order += "battery all"
 order += "load"
-order += "sysdata mem"
+order += "sysdata"
 order += "alerted_time"
-
-wireless _first_ {
-        format_up = ": %essid"
-        format_down = ""
-}
+# order += "volume_status"
 
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
@@ -31,11 +26,14 @@ ethernet _first_ {
         format_down = ""
 }
 
-battery all {
-        format = "%status: %percentage %remaining"
-	status_chr = ""
-	status_bat = ""
-	status_full = ""
+wireless _first_ {
+	format_up = " %essid"
+	format_down = ""
+}
+
+
+sysdata {
+	format = "[\?color=mem  {mem_used} {mem_unit} ({mem_used_percent}%)]"
 }
 
 alerted_time {
@@ -43,17 +41,13 @@ alerted_time {
 }
 
 load {
-        format = ":%1min"
-}
-
-sysdata mem {
-	cache_timeout = 5
-	format = "[\?color=mem : {mem_used_percent}%]"
+        format = " %1min"
 }
 
 disk "/" {
-        format = ":%avail"
+        format = " %avail"
 }
+
 disk "/home" {
-	format = ":%avail"
+        format = " %avail"
 }
