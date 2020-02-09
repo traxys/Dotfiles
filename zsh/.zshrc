@@ -2,7 +2,7 @@
 export PATH=/opt/mips-tools-cep/bin:/home/traxys/.cargo/bin:$HOME/bin:$PATH
 GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin:/home/traxys/Documents/GL/global/bin"
 
 fpath=(/home/traxys/.zfunc $fpath)
 
@@ -117,7 +117,7 @@ alias cat='bat -p'
 alias ls='ls --color=auto --ignore="*.plist"'
 alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$(gopass vpn)" | sudo openconnect vpn.grenet.fr'
 alias nvim-conf='nvim ~/.config/nvim/init.vim'
-alias famservConnect='mosh --ssh="ssh -p 9422" 82.235.104.10'
+alias famservConnect='ssh -p 9422 82.235.104.10'
 alias zeserverConnect='ssh 109.13.67.208'
 alias screenRegion='slurp | grim -g - '
 alias pacmanBySize='expac "%n %m" -l'\n' -Q $(pacman -Qq) | sort -rhk 2 | less'
@@ -132,14 +132,20 @@ export XKB_DEFAULT_VARIANT=dvp
 export XKB_DEFAULT_MODEL=pc105
 export XKB_DEFAULT_OPTION=compose:102
 
+export QT_QPA_PLATFORM=wayland-egl
+export CLUTTER_BACKEND=wayland
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+export KITTY_ENABLE_WAYLAND=1
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export DATABASE_HOST=localhost
 export DATABASE_PORT=2379
-export RUSTC_WRAPPER=sccache
-#export RUSTC_WRAPPER=
+#export RUSTC_WRAPPER=sccache
+export RUSTC_WRAPPER=
 
 DVORAK=/usr/share/kbd/keymaps/i386/dvorak/dvorak-programmer.map.gz
 #source ~/.purepower

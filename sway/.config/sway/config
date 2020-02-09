@@ -38,13 +38,13 @@ bindsym $mod+dollar exec /home/traxys/switch_layout.sh
 bindsym $mod+Shift+semicolon kill
 bindsym Print exec grim "$(date --iso-8601=seconds).png"
 
-bindsym $mod+l exec rofi-pass
 
 exec --no-startup-id dunst
-exec --no-startup-id fcitx
+exec --no-startup-id fcitx -r
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
+# bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
+bindsym $mod+e exec wofi --show drun,run -c ~/.config/wofi
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

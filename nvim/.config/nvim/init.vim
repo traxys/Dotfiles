@@ -10,11 +10,10 @@ Plug 'Soares/base16.nvim'
 Plug 'airblade/vim-gitgutter'
 " Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dart-lang/dart-vim-plugin'
-"Plug 'rhysd/vim-clang-format'
+" Plug 'rhysd/vim-clang-format'
 Plug 'plasticboy/vim-markdown'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
@@ -23,10 +22,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'previm/previm'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
-
-
+Plug 'dpelle/vim-Grammalecte'
+Plug 'dpelle/vim-LanguageTool'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -48,6 +46,8 @@ endif
 
 syntax on
 let g:base16_transparent_background = 1
+let g:grammalecte_cli_py = '/usr/bin/grammalecte-cli'
+let g:vim_markdown_conceal_code_blocks = 0
 "let g:base16_airline=1
 
 set background=dark
@@ -83,8 +83,6 @@ set signcolumn=yes
 
 nmap <silent> ft :NERDTreeToggle<CR>
 " autocmd vimenter * NERDTree
-
-let g:previm_open_cmd = 'firefox'
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
