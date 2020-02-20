@@ -25,6 +25,11 @@ Plug 'junegunn/gv.vim'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'scrooloose/nerdtree'
+Plug 'tyru/eskk.vim'
+Plug 'tyru/skkdict.vim'
+Plug 'andymass/vim-matchup'
+Plug 'mattn/emmet-vim'
+Plug 'majutsushi/tagbar'
 
 call plug#end()
 
@@ -49,6 +54,12 @@ let g:base16_transparent_background = 1
 let g:grammalecte_cli_py = '/usr/bin/grammalecte-cli'
 let g:vim_markdown_conceal_code_blocks = 0
 "let g:base16_airline=1
+
+let g:eskk#large_dictionary = {
+    \   'path': '/usr/share/skk/SKK-JISYO.L',
+    \   'sorted': 1,
+    \   'encoding': 'euc-jp',
+    \}
 
 set background=dark
 colorscheme chalk
@@ -82,6 +93,7 @@ set shortmess+=c
 set signcolumn=yes
 
 nmap <silent> ft :NERDTreeToggle<CR>
+nmap <silent> ct :TagbarToggle<CR>
 " autocmd vimenter * NERDTree
 
 inoremap <silent><expr> <TAB>

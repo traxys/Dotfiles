@@ -1,18 +1,13 @@
 {
 	"java.format.enabled": true,
 	"rust-analyzer.enableCargoWatchOnStartup":"enabled",
-	"--coc.preferences.formatOnSaveFiletypes": ["rust"],
 	"languageserver": {
-		"ccls": {
-			"command": "ccls",
-			"filetypes": ["c", "cpp", "objc", "objcpp"],
-			"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-			"initializationOptions": {
-				"cache": {
-					"directory": "/tmp/ccls"
-				}
-			}
-		},
+		"clangd": {
+      	"command": "clangd",
+      "args": ["--background-index"],
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/", ".hg/"],
+      "filetypes": ["c", "cpp", "objc", "objcpp"]
+    },
 		"dart": {
 			"command": "/home/traxys/.pub-cache/bin/dart_language_server",
 			"args": [],
