@@ -50,6 +50,7 @@ if (empty($TMUX))
 endif
 
 syntax on
+let g:base16_color_overrides = { 'Pmenu' : 'bg=black'}
 let g:base16_transparent_background = 1
 let g:grammalecte_cli_py = '/usr/bin/grammalecte-cli'
 let g:vim_markdown_conceal_code_blocks = 0
