@@ -2,15 +2,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'octol/vim-cpp-enhanced-highlight'
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'drmikehenry/vim-headerguard'
 Plug 'Soares/base16.nvim'
 Plug 'airblade/vim-gitgutter'
-" Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
-Plug 'lervag/vimtex'
+" Plug 'lervag/vimtex'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dart-lang/dart-vim-plugin'
 " Plug 'rhysd/vim-clang-format'
@@ -19,7 +17,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
-Plug 'previm/previm'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'dpelle/vim-Grammalecte'
@@ -28,10 +25,12 @@ Plug 'scrooloose/nerdtree'
 Plug 'tyru/eskk.vim'
 Plug 'tyru/skkdict.vim'
 Plug 'andymass/vim-matchup'
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
 
 call plug#end()
+
+packadd termdebug
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support

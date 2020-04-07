@@ -76,6 +76,8 @@ plugins=(
 	git
 	fast-syntax-highlighting
   	wd
+	rust
+	#vi-mode
 )
 
 source "$ZSH/oh-my-zsh.sh"
@@ -112,6 +114,7 @@ source "$ZSH/oh-my-zsh.sh"
 #export _JAVA_AWT_WM_NONREPARENTING=1
 
 export EDITOR=nvim
+#bindkey -v
 
 alias cat='bat -p'
 alias ls='ls --color=auto --ignore="*.plist"'
@@ -152,6 +155,7 @@ DVORAK=/usr/share/kbd/keymaps/i386/dvorak/dvorak-programmer.map.gz
 
 export TERM=xterm-256color
 export CARGO_BUILD_PIPELINING=true
+eval "$(zoxide init zsh)"
 
 # source /home/traxys/.config/broot/launcher/bash/br
 
