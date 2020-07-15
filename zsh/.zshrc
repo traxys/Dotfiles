@@ -9,6 +9,8 @@ fpath=(/home/traxys/.zfunc $fpath)
 # Path to your oh-my-zsh installation.
   export ZSH="/home/traxys/.oh-my-zsh"
 
+source ~/.keys
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -147,8 +149,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export DATABASE_HOST=localhost
 export DATABASE_PORT=2379
-#export RUSTC_WRAPPER=sccache
-export RUSTC_WRAPPER=
+export RUSTC_WRAPPER=sccache
+#export RUSTC_WRAPPER=
+
 
 DVORAK=/usr/share/kbd/keymaps/i386/dvorak/dvorak-programmer.map.gz
 #source ~/.purepower

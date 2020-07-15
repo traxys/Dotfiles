@@ -27,6 +27,11 @@ Plug 'tyru/skkdict.vim'
 Plug 'andymass/vim-matchup'
 " Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
+Plug 'edwinb/idris2-vim'
+Plug 'posva/vim-vue'
+Plug 'pangloss/vim-javascript'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
@@ -85,6 +90,8 @@ let g:vimtex_view_method = 'zathura'
 let g:airline_powerline_fonts = 1
 
 let g:vim_markdown_folding_disabled = 1
+
+let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 set hidden
 set cmdheight=2
