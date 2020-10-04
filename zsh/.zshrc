@@ -1,3 +1,5 @@
+fortune | cowsay | dotacat
+
 # If you come from bash you might have to change your $PATH.
 export PATH=/opt/mips-tools-cep/bin:/home/traxys/.cargo/bin:$HOME/bin:$PATH
 GOPATH=~/go
@@ -119,16 +121,16 @@ export EDITOR=nvim
 #bindkey -v
 
 alias cat='bat -p'
-alias ls='ls --color=auto --ignore="*.plist"'
+#alias ls='ls --color=auto --ignore="*.plist"'
+alias ls="exa"
 alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$(gopass vpn)" | sudo openconnect vpn.grenet.fr'
 alias nvim-conf='nvim ~/.config/nvim/init.vim'
-alias famservConnect='ssh -p 9422 82.235.104.10'
-alias zeserverConnect='ssh 109.13.67.208'
 alias screenRegion='slurp | grim -g - '
 alias pacmanBySize='expac "%n %m" -l'\n' -Q $(pacman -Qq) | sort -rhk 2 | less'
 alias make="make -j2"
-alias rstudioBridge="ssh -N -p 22 traxys@109.13.67.208 -L 9000:localhost:8787"
 alias wake_zecomputa="wol e0:d5:5e:2c:87:d3"
+alias gen-pass='nextpass generate -sn 4'
+alias new-pass='nextpass create -t 4 -ds'
 
 alias icat="kitty +kitten icat"
 
@@ -144,7 +146,7 @@ export MOZ_ENABLE_WAYLAND=1
 export KITTY_ENABLE_WAYLAND=1
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+#export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export DATABASE_HOST=localhost
