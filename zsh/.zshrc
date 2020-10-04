@@ -40,6 +40,7 @@ alias make="make -j2"
 alias wake_zecomputa="wol e0:d5:5e:2c:87:d3"
 alias gen-pass='nextpass generate -sn 4'
 alias new-pass='nextpass create -t 4 -ds'
+alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 alias icat="kitty +kitten icat"
 

@@ -38,11 +38,12 @@ exec pasystray
 exec setxkbmap us dvp
 exec feh --bg-scale /home/traxys/Downloads/4K-Abstract-Desktop-Wallpaper-For-PC.jpg
 exec --no-startup-id dunst
+exec cadmus
 
 bindsym Print exec maim -s | xclip -selection clipboard -t image/png
 
 # start dmenu (a program launcher)
-bindsym $mod+e exec rofi -modi drun#run#ssh#pass:rofi-pass -show drun
+bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
 bindsym $mod+l exec rofi-pass
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -96,6 +97,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+bindsym $mod+Shift+Tab move scratchpad
+bindsym $mod+Tab scratchpad show
+
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -119,10 +123,8 @@ workspace $ws1 output DP-0
 exec signal-desktop
 exec discord
 exec firefox
+exec element-desktop
 
-assign [class="Firefox"] $ws2
-assign [class="discord"] $ws3
-assign [class="Signal"] $ws3
 
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1

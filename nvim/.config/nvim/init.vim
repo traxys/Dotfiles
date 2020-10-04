@@ -4,6 +4,8 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'RishabhRD/popfix'
+Plug 'RishabhRD/nvim-lsputils'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline'
@@ -43,7 +45,18 @@ call plug#end()
 
 packadd termdebug
 
+let g:vimsyn_embed = 'lPr'
 lua << EOF
+
+vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
+vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
+vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+
 local on_attach_vim = function()
   require'completion'.on_attach()
   require'diagnostic'.on_attach()
@@ -79,6 +92,7 @@ require'nvim-treesitter.configs'.setup {
       	},
     },
 }
+require'nvim_lsp'.texlab.setup{on_attach=on_attach_vim}
 EOF
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
