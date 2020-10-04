@@ -40,12 +40,13 @@ bindsym $mod+Shift+semicolon kill
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 
-exec --no-startup-id dunst
+exec --no-startup-id mako
 exec --no-startup-id fcitx -r
+exec --no-startup-id wdumpkeys >> ~/.keydump
 
 # start dmenu (a program launcher)
 # bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
-bindsym $mod+e exec wofi --show drun,run -c ~/.config/wofi
+bindsym $mod+e exec wofi --show drun,run -c ~/.config/wofi --allow-images
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -184,7 +185,7 @@ input 1:1:AT_Translated_Set_2_keyboard {
 	xkb_variant dvp
 }
 # swaymsg input 2:14:ETPS/2_Elantech_Touchpad dwt disable
-input 2:14:ETPS/2_Elantech_Touchpad {
+input 2:7:SynPS/2_Synaptics_TouchPad {
 	dwt disable
 }
 #input 1:1:AT_Translated_Set_2_keyboard {
