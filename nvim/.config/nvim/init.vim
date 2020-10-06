@@ -9,9 +9,9 @@ Plug 'RishabhRD/nvim-lsputils'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'drmikehenry/vim-headerguard'
-Plug 'Soares/base16.nvim'
+"Plug 'Soares/base16.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'rust-lang/rust.vim'
 " Plug 'lervag/vimtex'
@@ -28,15 +28,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'dpelle/vim-Grammalecte'
 Plug 'dpelle/vim-LanguageTool'
-Plug 'tyru/eskk.vim'
-Plug 'tyru/skkdict.vim'
+"Plug 'tyru/eskk.vim'
+"Plug 'tyru/skkdict.vim'
 Plug 'andymass/vim-matchup'
 " Plug 'mattn/emmet-vim'
 Plug 'majutsushi/tagbar'
-Plug 'edwinb/idris2-vim'
+"Plug 'edwinb/idris2-vim'
 Plug 'posva/vim-vue'
-Plug 'pangloss/vim-javascript'
-Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'pangloss/vim-javascript'
+"Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'cespare/vim-toml'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'bluz71/vim-moonfly-colors'
@@ -61,20 +61,6 @@ local on_attach_vim = function()
   require'completion'.on_attach()
   require'diagnostic'.on_attach()
 end
-require'nvim_lsp'.dartls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.rust_analyzer.setup{
-	on_attach=on_attach_vim,
-	settings = {
-		["rust-analyzer"] = {
-			cargo = {
-				allFeatures = true
-			},
-			updates = {
-				channel = "nightly"
-			}
-		}
-	}
-}
 require'nvim-treesitter.configs'.setup {
   	ensure_installed = "all",     -- one of "all", "language", or a list of languages
  	highlight = {
@@ -92,7 +78,32 @@ require'nvim-treesitter.configs'.setup {
       	},
     },
 }
+require'nvim_lsp'.rust_analyzer.setup{
+	on_attach=on_attach_vim,
+	settings = {
+		["rust-analyzer"] = {
+			cargo = {
+				allFeatures = true
+			},
+			updates = {
+				channel = "nightly"
+			}
+		}
+	}
+}
 require'nvim_lsp'.texlab.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.elixirls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.jsonls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.dartls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.sqlls.setup{
+	on_attach=on_attach_vim,
+	cmd = {"/home/traxys/.cache/nvim/nvim_lsp/sqlls/node_modules/.bin/sql-language-server", "up", "--method", "stdio"}
+}
+require'nvim_lsp'.terraformls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.vimls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.yamlls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.dockerls.setup{on_attach=on_attach_vim}
+require'nvim_lsp'.html.setup{on_attach=on_attach_vim}
 EOF
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
