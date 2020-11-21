@@ -14,16 +14,11 @@ Plug 'peterhoeg/vim-qml'
 Plug 'elixir-editors/vim-elixir'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'glepnir/galaxyline.nvim'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'drmikehenry/vim-headerguard'
-"Plug 'Soares/base16.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'rust-lang/rust.vim'
-" Plug 'lervag/vimtex'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dart-lang/dart-vim-plugin'
-" Plug 'rhysd/vim-clang-format'
 Plug 'plasticboy/vim-markdown'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -418,7 +413,6 @@ let g:base16_color_overrides = { 'Pmenu' : 'bg=black'}
 let g:base16_transparent_background = 1
 let g:grammalecte_cli_py = '/usr/bin/grammalecte-cli'
 let g:vim_markdown_conceal_code_blocks = 0
-"let g:base16_airline=1
 
 let g:eskk#large_dictionary = {
     \   'path': '/usr/share/skk/SKK-JISYO.L',
@@ -436,10 +430,6 @@ set ai
 
 set statusline+=%#warningmsg#
 set statusline+=%*
-
-" let g:rainbow_active = 1
-
-" let g:rustfmt_autosave = 1
 
 let g:tex_flavor  = 'latex'
 let g:tex_conceal = ''
