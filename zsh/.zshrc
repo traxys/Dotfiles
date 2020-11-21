@@ -1,4 +1,3 @@
-fortune | cowsay | dotacat
 
 # If you come from bash you might have to change your $PATH.
 export PATH=/opt/mips-tools-cep/bin:/home/traxys/.cargo/bin:$HOME/bin:$PATH
@@ -32,7 +31,7 @@ export EDITOR=nvim
 
 alias cat='bat -p'
 alias ls="exa"
-alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$(gopass vpn)" | sudo openconnect vpn.grenet.fr'
+alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$MPD_VPN" | sudo openconnect vpn.grenet.fr'
 alias nvim-conf='nvim ~/.config/nvim/init.vim'
 alias screenRegion='slurp | grim -g - '
 alias pacmanBySize='expac "%n %m" -l'\n' -Q $(pacman -Qq) | sort -rhk 2 | less'
@@ -61,8 +60,8 @@ fi
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-export RUSTC_WRAPPER=sccache
-#export RUSTC_WRAPPER=
+#export RUSTC_WRAPPER=sccache
+export RUSTC_WRAPPER=
 
 
 DVORAK=/usr/share/kbd/keymaps/i386/dvorak/dvorak-programmer.map.gz
@@ -87,3 +86,5 @@ eval "$(zoxide init zsh)"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+fortune | cowsay | dotacat
