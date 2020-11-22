@@ -38,7 +38,6 @@ exec pasystray
 exec setxkbmap us dvp
 exec feh --bg-scale /home/traxys/Downloads/4K-Abstract-Desktop-Wallpaper-For-PC.jpg
 exec --no-startup-id dunst
-exec cadmus
 
 bindsym Print exec maim -s | xclip -selection clipboard -t image/png
 
@@ -124,7 +123,7 @@ exec signal-desktop
 exec discord
 exec firefox
 exec element-desktop
-
+exec ckb-next
 
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
