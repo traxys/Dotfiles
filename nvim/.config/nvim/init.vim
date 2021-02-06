@@ -4,11 +4,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 
+Plug 'jdonaldson/vaxe'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'peterhoeg/vim-qml'
 Plug 'elixir-editors/vim-elixir'
@@ -20,8 +20,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'plasticboy/vim-markdown'
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'luochen1990/rainbow'
@@ -43,6 +42,11 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'bluz71/vim-moonfly-colors'
 Plug 'hashivim/vim-terraform'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+Plug 'kosayoda/nvim-lightbulb'
+"keybind are gcc for commenting a line and gc for selection
+Plug 'b3nj5m1n/kommentary'
+Plug 'hrsh7th/nvim-compe'
+
 
 call plug#end()
 
@@ -50,6 +54,32 @@ packadd termdebug
 
 let g:vimsyn_embed = 'lPr'
 lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    vsnip = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    spell = true;
+    tags = true;
+    snippets_nvim = true;
+    treesitter = true;
+  };
+}
 
 local gl = require('galaxyline')
 local gls = gl.section
@@ -287,7 +317,7 @@ require'nvim-treesitter.configs'.setup {
 local lspconfig = require'lspconfig'
 
 local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
+  --require'completion'.on_attach(client)
   lsp_status.on_attach(client)
 end
 
@@ -353,15 +383,20 @@ lspconfig.bashls.setup{
 	on_attach=on_attach_vim,
 	capabilities = lsp_status.capabilities
 }
+require'lspconfig'.sumneko_lua.setup{
+  cmd = {"/home/traxys/bin/lua-language-server"},
+	on_attach=on_attach_vim,
+	capabilities = lsp_status.capabilities
+}
 --require'lspconfig'.jdtls.setup{on_attach=on_attach_vim}
-
-require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
+--require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
 EOF
 
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-set completeopt=menuone,noinsert,noselect
+"set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
 set shortmess+=c
 
 nmap <silent> [c <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
@@ -448,8 +483,10 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
+set scrolloff=7
 
-nmap <silent> ft :NERDTreeToggle<CR>
+nmap <silent> ft :CHADopen<CR>
+nmap <silent> bp :BufferPick<CR>
 nmap <silent> ct :TagbarToggle<CR>
 
 let g:diagnostic_enable_virtual_text = 1
@@ -459,6 +496,7 @@ let g:diagnostic_trimmed_virtual_text = '40'
 set updatetime=300
 " Show diagnostic popup on cursor hold
 autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
