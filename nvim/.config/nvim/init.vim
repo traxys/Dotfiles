@@ -5,8 +5,9 @@ Plug 'romgrk/barbar.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 Plug 'tjdevries/lsp_extensions.nvim'
-Plug 'RishabhRD/popfix'
-Plug 'RishabhRD/nvim-lsputils'
+"Plug 'RishabhRD/popfix'
+"Plug 'RishabhRD/nvim-lsputils'
+Plug 'glepnir/lspsaga.nvim'
 
 Plug 'jdonaldson/vaxe'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -54,6 +55,10 @@ packadd termdebug
 
 let g:vimsyn_embed = 'lPr'
 lua << EOF
+
+local saga = require 'lspsaga'
+saga.init_lsp_saga()
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
@@ -288,14 +293,14 @@ gls.right[8] = {
   }
 }
 
-vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
+-- vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
+-- vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
+-- vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
+-- vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
+-- vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
+-- vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
+-- vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
+-- vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 require'nvim-treesitter.configs'.setup {
   	ensure_installed = "all",     -- one of "all", "language", or a list of languages
@@ -399,19 +404,22 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menu,menuone,noselect
 set shortmess+=c
 
-nmap <silent> [c <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <silent> ]c <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent><leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
+nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
 
-nnoremap <silent> gd    		<cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     		<cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
 nnoremap <silent> gr    		<cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> <c-k> 		<cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gF    		<cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    		<cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> gT    		<cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> ff    		<cmd>lua vim.lsp.buf.formatting()<CR>
-nnoremap <silent> <leader>rn    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> ca    		<cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent><leader>rn <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent>ca <cmd>'<,'>lua require('lspsaga.codeaction').range_code_action()<CR>
 
 noremap b n
 
