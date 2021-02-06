@@ -48,7 +48,8 @@ export XKB_DEFAULT_VARIANT=dvp
 export XKB_DEFAULT_MODEL=pc105
 export XKB_DEFAULT_OPTION=compose:102
 
-if test -f "~/.wayland"; then
+if [ -f "$HOME/.wayland" ]; then
+	echo "Wayland based"
 	export QT_QPA_PLATFORM=wayland-egl
 	export CLUTTER_BACKEND=wayland
 	export SDL_VIDEODRIVER=wayland
