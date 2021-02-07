@@ -46,8 +46,8 @@ Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'kosayoda/nvim-lightbulb'
 "keybind are gcc for commenting a line and gc for selection
 Plug 'b3nj5m1n/kommentary'
-Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
@@ -326,7 +326,8 @@ local on_attach_vim = function(client)
   lsp_status.on_attach(client)
 end
 
-local capabilities = lsp_status.capabilities
+--local capabilities = lsp_status.capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.rust_analyzer.setup{
@@ -398,10 +399,40 @@ require'lspconfig'.sumneko_lua.setup{
 }
 --require'lspconfig'.jdtls.setup{on_attach=on_attach_vim}
 --require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
+
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  else
+    return t "<Tab>"
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 EOF
 
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
 "set completeopt=menuone,noinsert,noselect
 set completeopt=menu,menuone,noselect
