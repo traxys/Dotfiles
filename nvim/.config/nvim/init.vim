@@ -47,7 +47,7 @@ Plug 'kosayoda/nvim-lightbulb'
 "keybind are gcc for commenting a line and gc for selection
 Plug 'b3nj5m1n/kommentary'
 Plug 'hrsh7th/nvim-compe'
-
+Plug 'hrsh7th/vim-vsnip'
 
 call plug#end()
 
@@ -326,6 +326,9 @@ local on_attach_vim = function(client)
   lsp_status.on_attach(client)
 end
 
+local capabilities = lsp_status.capabilities
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lspconfig.rust_analyzer.setup{
 	on_attach=on_attach_vim,
 	settings = {
@@ -338,60 +341,60 @@ lspconfig.rust_analyzer.setup{
 			}
 		}
 	},
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.texlab.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.elixirls.setup{
 	on_attach=on_attach_vim,
 	cmd = {"elixir-ls"},
 	filetypes = { "elixir", "eelixir", "ex" },
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.jsonls.setup{
 	on_attach=on_attach_vim,
 	cmd = { "json-languageserver", "--stdio" },
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.dartls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.sqlls.setup{
 	on_attach=on_attach_vim,
 	cmd = {"/home/traxys/.cache/nvim/nvim_lsp/sqlls/node_modules/.bin/sql-language-server", "up", "--method", "stdio"},
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.terraformls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.vimls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.yamlls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.dockerls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.html.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 lspconfig.bashls.setup{
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 require'lspconfig'.sumneko_lua.setup{
   cmd = {"/home/traxys/bin/lua-language-server"},
 	on_attach=on_attach_vim,
-	capabilities = lsp_status.capabilities
+	capabilities = capabilities
 }
 --require'lspconfig'.jdtls.setup{on_attach=on_attach_vim}
 --require "nvim-treesitter.parsers".get_parser_configs().markdown = nil
