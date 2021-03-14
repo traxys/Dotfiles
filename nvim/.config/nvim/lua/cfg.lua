@@ -1,3 +1,5 @@
+require('lspkind').init()
+
 local saga = require 'lspsaga'
 saga.init_lsp_saga()
 
@@ -337,8 +339,39 @@ lspconfig.bashls.setup{
 	on_attach=on_attach_vim,
 	capabilities = capabilities
 }
+
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+local sumneko_root_path = "~/Softs/lua-language-server"
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 require'lspconfig'.sumneko_lua.setup{
-  cmd = {"/home/traxys/bin/lua-language-server"},
+	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+    },
+	diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+    },
+	workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          	[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          	[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+    	},
+    },
 	on_attach=on_attach_vim,
 	capabilities = capabilities
 }
