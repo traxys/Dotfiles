@@ -1,16 +1,15 @@
-
-# If you come from bash you might have to change your $PATH.
-export PATH=/opt/mips-tools-cep/bin:/home/traxys/.cargo/bin:$HOME/bin:$PATH
 GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
-export PATH="$PATH":"$HOME/.pub-cache/bin:/home/traxys/Documents/GL/global/bin"
+# If you come from bash you might have to change your $PATH.
+export PATH="$HOME/.cargo/bin:$HOME/bin:$PATH:$HOME/.pub-cache/bin:$GOPATH/bin"
 
-fpath=(/home/traxys/.zfunc $fpath)
+fpath=($HOME/.zfunc $fpath)
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/traxys/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
-source ~/.keys
+if [ -f "$HOME/.keys" ] ; then
+	source ~/.keys
+fi
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -33,14 +32,10 @@ export EDITOR=nvim
 
 alias cat='bat -p'
 alias ls="exa --icons"
-alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$MPD_VPN" | sudo openconnect vpn.grenet.fr'
 alias nvim-conf='nvim ~/.config/nvim/init.vim'
 alias screenRegion='slurp | grim -g - '
 alias pacmanBySize='expac "%n %m" -l'\n' -Q $(pacman -Qq) | sort -rhk 2 | less'
 alias make="make -j2"
-alias wake_zecomputa="wol e0:d5:5e:2c:87:d3"
-alias gen-pass='nextpass generate -sn 4'
-alias new-pass='nextpass create -t 4 -ds'
 alias tlmgr='/usr/share/texmf-dist/scripts/texlive/tlmgr.pl --usermode'
 
 alias icat="kitty +kitten icat"
@@ -51,13 +46,16 @@ export XKB_DEFAULT_MODEL=pc105
 export XKB_DEFAULT_OPTION=compose:102
 
 if [ -f "$HOME/.wayland" ]; then
-	echo "Wayland based"
 	export QT_QPA_PLATFORM=wayland-egl
 	export CLUTTER_BACKEND=wayland
 	export SDL_VIDEODRIVER=wayland
 	export MOZ_ENABLE_WAYLAND=1
 	export KITTY_ENABLE_WAYLAND=1
 	export _JAVA_AWT_WM_NONREPARENTING=1
+fi
+
+if [ -f "$HOME/.zvars" ]; then
+	source "$HOME/.zvars"
 fi
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -43,7 +43,7 @@ bindsym Print exec maim -s | xclip -selection clipboard -t image/png
 
 # start dmenu (a program launcher)
 bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
-bindsym $mod+l exec rofi-pass
+bindsym $mod+l exec bwmenu -c 30
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
