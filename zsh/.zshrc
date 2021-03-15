@@ -24,13 +24,15 @@ plugins=(
 	#vi-mode
 )
 
+eval $(luarocks path)
+
 source "$ZSH/oh-my-zsh.sh"
 
 export EDITOR=nvim
 #bindkey -v
 
 alias cat='bat -p'
-alias ls="exa"
+alias ls="exa --icons"
 alias vpn-imag='echo "Etudiants de Grenoble INP\nboyerq\n$MPD_VPN" | sudo openconnect vpn.grenet.fr'
 alias nvim-conf='nvim ~/.config/nvim/init.vim'
 alias screenRegion='slurp | grim -g - '
