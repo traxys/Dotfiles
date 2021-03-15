@@ -48,6 +48,7 @@ Plug 'kosayoda/nvim-lightbulb'
 Plug 'b3nj5m1n/kommentary'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/nvim-compe'
+Plug 'teal-language/vim-teal'
 
 call plug#end()
 
