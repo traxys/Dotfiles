@@ -101,7 +101,7 @@ set shortmess+=c
 set signcolumn=yes
 set scrolloff=7
 
-nmap <silent> ft :CHADopen<CR>
+nmap <silent> ft :NvimTreeToggle<CR>
 nmap <silent> bp :BufferPick<CR>
 nmap <silent> ct :TagbarToggle<CR>
 

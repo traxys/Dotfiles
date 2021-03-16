@@ -59,8 +59,10 @@ return require('packer').startup(function()
 	-- Inteface
 	use 'romgrk/barbar.nvim'
 	use 'glepnir/galaxyline.nvim'
-	use {'ms-jpq/chadtree', branch = 'chad', run = 'python3 -m chadtree deps'}
+	use 'kyazdani42/nvim-tree.lua'
+
 
 	-- Theme
 	use 'bluz71/vim-moonfly-colors'
+	use { 'yamatsum/nvim-web-nonicons', requires = {'kyazdani42/nvim-web-devicons'}}
 end)
