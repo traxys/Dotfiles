@@ -13,56 +13,36 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 
-	use 'kyazdani42/nvim-web-devicons'
-	use 'ryanoasis/vim-devicons'
+	use {'kyazdani42/nvim-web-devicons'}
 
-	-- Generic Language Plugins
-	use 'neovim/nvim-lspconfig'
-	use 'nvim-lua/lsp_extensions.nvim'
-	use 'glepnir/lspsaga.nvim'
-	use 'nvim-lua/lsp-status.nvim'
-	use 'editorconfig/editorconfig-vim'
-	use 'majutsushi/tagbar'
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use 'hrsh7th/vim-vsnip'
-	use 'hrsh7th/nvim-compe'
-	use 'onsails/lspkind-nvim'
-	use 'teal-language/vim-teal'
+	use { 'neovim/nvim-lspconfig' }
 
-	-- Specific Langs
-	use 'peterhoeg/vim-qml'
-	use 'elixir-editors/vim-elixir'
-	use 'octol/vim-cpp-enhanced-highlight'
+	use { 'kosayoda/nvim-lightbulb' }
+	use { 'Yggdroot/indentLine'} 
+	use {
+  		'lewis6991/gitsigns.nvim',
+  		requires = {
+    			'nvim-lua/plenary.nvim'
+  		},
+		config = function()
+    			require('gitsigns').setup()
+  		end
+	}
+
+	use { 'bluz71/vim-moonfly-colors' }
+	use { 'hrsh7th/nvim-compe' }
+
+	use {'nvim-lua/lsp_extensions.nvim'}
+
+	use {
+  		'nvim-telescope/telescope.nvim',
+  		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+	}
+
 	use 'drmikehenry/vim-headerguard'
-	use 'rust-lang/rust.vim'
-	use 'dart-lang/dart-vim-plugin'
-	use 'plasticboy/vim-markdown'
-	use 'dpelle/vim-Grammalecte'
-	use 'dpelle/vim-LanguageTool'
-	use 'posva/vim-vue'
-	use 'cespare/vim-toml'
-	use 'hashivim/vim-terraform'
-	use {'pearofducks/ansible-vim', run = "./UltiSnips/generate.sh"}
-
-	-- Git
-	use 'airblade/vim-gitgutter'
-	use 'tpope/vim-fugitive'
-	use 'junegunn/gv.vim'
-
-	-- Misc
 	use 'andymass/vim-matchup'
-	use 'Yggdroot/indentLine'
 	use 'b3nj5m1n/kommentary'
-	use 'andweeb/presence.nvim'
-	use 'kosayoda/nvim-lightbulb' 
+	use 'onsails/lspkind-nvim'
 
-	-- Inteface
-	use 'romgrk/barbar.nvim'
-	use 'glepnir/galaxyline.nvim'
-	use 'kyazdani42/nvim-tree.lua'
-
-
-	-- Theme
-	use 'bluz71/vim-moonfly-colors'
-	use { 'yamatsum/nvim-web-nonicons', requires = {'kyazdani42/nvim-web-devicons'}}
 end)
