@@ -36,6 +36,7 @@ return require('packer').startup(function()
 	use { 'hrsh7th/nvim-compe' }
 
 	use {'nvim-lua/lsp_extensions.nvim'}
+	use {'ray-x/lsp_signature.nvim'}
 
 	use {
   		'nvim-telescope/telescope.nvim',
