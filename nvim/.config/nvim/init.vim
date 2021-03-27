@@ -21,6 +21,8 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+
 nnoremap <silent> bp <cmd>Telescope buffers<CR>
 nnoremap <silent> ca <cmd>Telescope lsp_code_actions<CR>
 nnoremap <silent> gr <cmd>Telescope lsp_references<CR>
