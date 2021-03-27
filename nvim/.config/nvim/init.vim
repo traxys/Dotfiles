@@ -2,6 +2,7 @@ lua require("plugins")
 lua require("tree_sitter")
 lua require("lsp")
 lua require("completion")
+lua require("statusline")
 
 set termguicolors
 colorscheme moonfly
@@ -27,7 +28,7 @@ nnoremap <silent> gW <cmd>Telescope lsp_workspace_symbols<CR>
 nnoremap <silent> gF <cmd>Telescope lsp_document_symbols<CR>
 nnoremap <silent> ft <cmd>Telescope file_browser<CR>
 nnoremap <silent> ge <cmd>Telescope lsp_document_diagnostics<CR>
-nnoremap <silent> mn <cmd>Telescope man_pages<CR>
+nnoremap <silent> mn <cmd>Telescope man_pages sections=1,3,5<CR>
 nnoremap <silent> fg <cmd>Telescope git_files<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
@@ -35,7 +36,7 @@ nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
 
 nnoremap <silent> mk <cmd>Telescope keymaps<CR>
 
-syntax enable
+"syntax enable
 filetype plugin indent on
 set omnifunc=v:lua.vim.lsp.omnifunc
 

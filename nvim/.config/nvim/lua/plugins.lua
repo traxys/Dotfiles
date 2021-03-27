@@ -17,6 +17,7 @@ return require('packer').startup(function()
 
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use { 'neovim/nvim-lspconfig' }
+	use { 'nvim-lua/lsp-status.nvim' }
 
 	use { 'kosayoda/nvim-lightbulb' }
 	use { 'Yggdroot/indentLine'} 
@@ -31,6 +32,7 @@ return require('packer').startup(function()
 	}
 
 	use { 'bluz71/vim-moonfly-colors' }
+	use { 'hrsh7th/vim-vsnip' }
 	use { 'hrsh7th/nvim-compe' }
 
 	use {'nvim-lua/lsp_extensions.nvim'}
@@ -40,6 +42,7 @@ return require('packer').startup(function()
   		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
 
+	use 'glepnir/galaxyline.nvim'
 	use 'drmikehenry/vim-headerguard'
 	use 'andymass/vim-matchup'
 	use 'b3nj5m1n/kommentary'
