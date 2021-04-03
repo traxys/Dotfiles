@@ -1,4 +1,5 @@
 lua require("plugins")
+lua require("misc")
 lua require("tree_sitter")
 lua require("lsp")
 lua require("completion")
