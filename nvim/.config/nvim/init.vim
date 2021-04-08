@@ -22,6 +22,28 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 2
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
+let g:grammalecte_cli_py = "/usr/bin/grammalecte-cli"
+let g:grammalecte_disable_rules = "apostrophe_typographique
+	\ apostrophe_typographique_après_t
+    \ espaces_début_ligne espaces_milieu_ligne
+    \ espaces_fin_de_ligne
+    \ typo_points_suspension1
+    \ typo_tiret_incise
+    \ nbsp_avant_double_ponctuation
+    \ nbsp_avant_deux_points
+    \ nbsp_après_chevrons_ouvrants
+    \ nbsp_avant_chevrons_fermants1
+    \ unit_nbsp_avant_unités1
+    \ unit_nbsp_avant_unités2
+    \ unit_nbsp_avant_unités3 
+    \ typo_espace_manquant_après2 
+	\ typo_guillemets_typographiques_simples_doubles_ouvrants
+	\ typo_guillemets_typographiques_simples_doubles_fermants
+	\ esp_milieu_ligne"
+
+let g:languagetool_cmd='/usr/bin/languagetool'
+let g:languagetool_lang="fr"
+
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
 nnoremap <silent> bp <cmd>Telescope buffers<CR>

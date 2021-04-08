@@ -35,6 +35,9 @@ return require('packer').startup(function()
 	use { 'hrsh7th/vim-vsnip' }
 	use { 'hrsh7th/nvim-compe' }
 
+	use { 'dpelle/vim-Grammalecte' }
+	use { 'dpelle/vim-LanguageTool' }
+
 	use {'nvim-lua/lsp_extensions.nvim'}
 	use {'ray-x/lsp_signature.nvim'}
 
@@ -48,5 +51,4 @@ return require('packer').startup(function()
 	use 'andymass/vim-matchup'
 	use 'b3nj5m1n/kommentary'
 	use 'onsails/lspkind-nvim'
-
 end)

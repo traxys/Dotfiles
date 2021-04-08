@@ -37,6 +37,10 @@ require'lspconfig'.clangd.setup{
 	init_options = { clangdFileStatus = true},
 	capabilities = capabilities
 }
+require'lspconfig'.texlab.setup{
+	on_attach = lsp_status.on_attach,
+	capabilities = capabilities
+}
 
 local system_name
 if vim.fn.has("mac") == 1 then
