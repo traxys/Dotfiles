@@ -23,7 +23,7 @@ plugins=(
 	#vi-mode
 )
 
-eval $(luarocks path)
+#eval $(luarocks path)
 
 source "$ZSH/oh-my-zsh.sh"
 
