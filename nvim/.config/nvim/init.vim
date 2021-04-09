@@ -23,6 +23,9 @@ let g:indentLine_conceallevel = 2
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 let g:grammalecte_cli_py = "/usr/bin/grammalecte-cli"
+let latex_ignore = "typo_guillemets_typographiques_simples_doubles_ouvrants
+	\ typo_guillemets_typographiques_simples_doubles_fermants
+	\ esp_milieu_ligne"
 let g:grammalecte_disable_rules = "apostrophe_typographique
 	\ apostrophe_typographique_après_t
     \ espaces_début_ligne espaces_milieu_ligne
@@ -36,10 +39,7 @@ let g:grammalecte_disable_rules = "apostrophe_typographique
     \ unit_nbsp_avant_unités1
     \ unit_nbsp_avant_unités2
     \ unit_nbsp_avant_unités3 
-    \ typo_espace_manquant_après2 
-	\ typo_guillemets_typographiques_simples_doubles_ouvrants
-	\ typo_guillemets_typographiques_simples_doubles_fermants
-	\ esp_milieu_ligne"
+    \ typo_espace_manquant_après2" . latex_ignore
 
 let g:languagetool_cmd='/usr/bin/languagetool'
 let g:languagetool_lang="fr"
