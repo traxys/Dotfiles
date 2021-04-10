@@ -40,6 +40,7 @@ exec feh --bg-scale /home/traxys/Downloads/4K-Abstract-Desktop-Wallpaper-For-PC.
 exec --no-startup-id dunst
 
 bindsym Print exec maim -s | xclip -selection clipboard -t image/png
+bindsym $mod+space exec --no-startup-id ~/bin/switch_layout
 
 # start dmenu (a program launcher)
 bindsym $mod+e exec rofi -modi drun#run#ssh -show drun
@@ -89,9 +90,6 @@ bindsym $mod+period layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent

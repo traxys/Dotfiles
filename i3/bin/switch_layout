@@ -1,0 +1,10 @@
+#!/bin/sh
+
+echo "EXEC" >> ~/switch
+
+if [ -n "$(setxkbmap -query | grep "variant")" ]; then
+	setxkbmap us
+else
+	setxkbmap us dvp
+fi
+
