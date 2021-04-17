@@ -13,6 +13,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
 	use {'wbthomason/packer.nvim', opt = true}
 
+	use { 'aklt/plantuml-syntax' }
+
 	use {'kyazdani42/nvim-web-devicons'}
 
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

@@ -16,6 +16,8 @@ set signcolumn=yes
 set cmdheight=2
 set hidden
 
+let g:tex_flavor = "latex"
+
 set completeopt=menuone,noselect
 
 let g:indentLine_concealcursor = 'inc'
