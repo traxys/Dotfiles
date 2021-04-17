@@ -60,8 +60,10 @@ nnoremap <silent> fg <cmd>Telescope git_files<CR>
 nnoremap <silent> K  <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> ff <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <silent> <leader>s <cmd>Telescope spell_suggest<CR>
 
 nnoremap <silent> mk <cmd>Telescope keymaps<CR>
+command SpellFr setlocal spell spelllang=fr
 
 "syntax enable
 filetype plugin indent on
