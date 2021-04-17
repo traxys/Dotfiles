@@ -43,7 +43,6 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 
 exec --no-startup-id mako
-exec --no-startup-id fcitx -r
 exec --no-startup-id wdumpkeys >> ~/.keydump
 
 # start dmenu (a program launcher)
