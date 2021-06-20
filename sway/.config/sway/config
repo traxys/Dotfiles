@@ -34,7 +34,7 @@ font pango:Hack Nerd Font 13
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 bindsym $mod+dollar exec /home/traxys/switch_layout.sh
 
 # kill focused window
@@ -199,3 +199,7 @@ bindsym $mod+p mode "resize"
 bar {
     swaybar_command waybar
 }
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
