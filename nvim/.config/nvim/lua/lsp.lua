@@ -44,7 +44,12 @@ require'lspconfig'.texlab.setup{
 	capabilities = capabilities
 }
 
-local system_name
+require'lspconfig'.rnix.setup{
+	on_attach = lsp_status.on_attach,
+	capabilities = capabilities
+}
+
+--[[ local system_name
 if vim.fn.has("mac") == 1 then
 	system_name = "macOS"
 elseif vim.fn.has("unix") == 1 then
@@ -87,4 +92,4 @@ require'lspconfig'.sumneko_lua.setup {
 			},
 		},
 	},
-}
+} ]]

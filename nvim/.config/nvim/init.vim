@@ -65,11 +65,13 @@ nnoremap <silent> <C-s> <cmd>Telescope spell_suggest<CR>
 nnoremap <silent> mk <cmd>Telescope keymaps<CR>
 command SpellFr setlocal spell spelllang=fr
 
+autocmd BufNewFile,BufRead *.nix set ft=nix
+
 "syntax enable
 filetype plugin indent on
 set omnifunc=v:lua.vim.lsp.omnifunc
 
-set updatetime=300
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
+"set updatetime=300
+"autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+"autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+"autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{}
